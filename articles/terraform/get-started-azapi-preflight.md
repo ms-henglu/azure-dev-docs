@@ -26,7 +26,7 @@ In this article, you learn how to use the [AzAPI Terraform provider](https://reg
 
 [!INCLUDE [configure-terraform.md](includes/configure-terraform.md)]
 
-- **Configure permission**: The Preflight validation API requires write permissions. Make sure that the service principal or user running Terraform has the necessary permissions to perform write operations on the resources you are validating.
+- **Configure permission**: The Preflight validation API requires write permissions. Make sure that the service principal or user running Terraform has the necessary permissions to perform write operations on the resources you're validating.
 
 ## Implement the Terraform code
 
@@ -80,7 +80,7 @@ In this article, you learn how to use the [AzAPI Terraform provider](https://reg
 
 [!INCLUDE [terraform-plan.md](includes/terraform-plan.md)]
 
-When you run `terraform plan`, the AzAPI provider will validate the configuration of your resources before applying changes. If there are any errors, Terraform will display an error message with details about the issue.
+When you run `terraform plan`, the AzAPI provider validates the configuration of your resources before applying changes. If there are any errors, Terraform displays an error message with details about the issue.
 
 ```shell
 ╷
@@ -120,7 +120,7 @@ When you run `terraform plan`, the AzAPI provider will validate the configuratio
 
 ### Enhanced Validation
 
-The preflight validation provides enhanced validation to catch configuration errors that are not caught by embedded schema validation. For example, if you try to create a virtual network with an invalid CIDR(it should be `/16` instead of `/160`):
+The preflight validation provides enhanced validation to catch configuration errors that embedded schema validation might not catch. For example, if you try to create a virtual network with an invalid CIDR(it should be `/16` instead of `/160`):
 
 ```hcl
 resource "azapi_resource" "virtualNetwork" {
@@ -140,7 +140,7 @@ resource "azapi_resource" "virtualNetwork" {
 }
 ```
 
-When you run `terraform plan`, you will see an error message like this:
+When you run `terraform plan`, you see an error message like this:
 
 ```shell
 ╷
@@ -176,7 +176,7 @@ When you run `terraform plan`, you will see an error message like this:
 
 ### Check Policy Restrictions
 
-The preflight validation also checks for policy restrictions. For example, if you try to create a storage account with `allowBlobPublicAccess` set to `true` and the policy does not allow it:
+The preflight validation also checks for policy restrictions. For example, if you try to create a storage account with `allowBlobPublicAccess` set to `true` and the policy doesn‘t allow it:
 
 ```hcl
 resource "azapi_resource" "storageaccount" {
@@ -196,7 +196,7 @@ resource "azapi_resource" "storageaccount" {
 }
 ```
 
-When you run `terraform plan`, you will see an error message like this:
+When you run `terraform plan`, you see an error message like this:
 
 ```shell
 ╷
